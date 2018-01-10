@@ -13,6 +13,9 @@ namespace MyWebsite
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+            routes.MapRoute(" Ships", "Ships", 
+                new { controller = "Home", action = "Ships" });
+
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",

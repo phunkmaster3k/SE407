@@ -13,16 +13,16 @@ namespace MyWebsite.Controllers
             return View();
         }
 
-        public ActionResult About()
+        public ActionResult Organizations()
         {
-            ViewBag.Message = "Your application description page.";
+            ViewBag.Message = "Orgs";
 
             return View();
         }
 
-        public ActionResult Contact()
+        public ActionResult Ships()
         {
-            ViewBag.Message = "Your contact page.";
+            ViewBag.Message = "Ships";
 
             return View();
         }
