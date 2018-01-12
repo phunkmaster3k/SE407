@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HtmlAgilityPack;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -23,6 +24,17 @@ namespace MyWebsite.Controllers
         public ActionResult Ships()
         {
             ViewBag.Message = "Ships";
+
+            var html = @"https://robertsspaceindustries.com/ship-matrix";
+
+            HtmlWeb web = new HtmlWeb();
+
+            var htmlDoc = web.Load(html);
+
+            var node = htmlDoc.DocumentNode.SelectSingleNode("//head/title");
+
+            ViewBag.ShipName = node.Name;
+            //Console.WriteLine("Node Name: " + node.Name + "\n" + node.OuterHtml);
 
             return View();
         }
