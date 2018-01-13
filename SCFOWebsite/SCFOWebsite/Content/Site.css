@@ -31,9 +31,29 @@ textarea {
 }
 
 .card { 
-    background-color: white;
+    background: linear-gradient(grey, black);
     padding: 20px;
-    color: black;
+    color: white;
+    border-radius: 5px;
 }
+
+.myTable {
+    background-color: white;
+    border-radius: 5px;
+}
+
+h2 {
+    color:white;
+}
+
+footer { 
+    color: white;
+}
+
+.jumbotron {
+    background: linear-gradient(grey, black);
+    color: white;
+}
+
 
 
