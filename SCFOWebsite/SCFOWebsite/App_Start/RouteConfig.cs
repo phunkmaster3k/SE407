@@ -19,6 +19,10 @@ namespace SCFOWebsite
             routes.MapRoute(" Ships", "Ships",
                 new { controller = "Home", action = "Ships" });
 
+            routes.MapRoute(name: "ShowAll",
+                url: "{ name}/{ id}-Details",
+                defaults: new { controller = "Home", action = "ShowAll", id = UrlParameter.Optional });
+
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",

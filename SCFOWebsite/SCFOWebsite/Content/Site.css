@@ -2,7 +2,7 @@
     padding-top: 50px;
     padding-bottom: 20px;
     background-image: url(../Content/Images/bg.jpg);
-    background-size: 100%;
+    background-size: cover;
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -30,11 +30,26 @@ textarea {
   
 }
 
+.card-title {
+    color:aquamarine;
+}
+
+
 .card { 
-    background: linear-gradient(grey, black);
+    background: linear-gradient(#3d0a55, navy);
+    opacity: .9;
     padding: 20px;
     color: white;
     border-radius: 5px;
+    height: 180px;
+    
+}
+
+.card-text {
+    height: 80px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-wrap: break-word;
 }
 
 .myTable {
@@ -51,8 +66,9 @@ footer {
 }
 
 .jumbotron {
-    background: linear-gradient(grey, black);
+    background: linear-gradient(lightblue, navy);
     color: white;
+    opacity: .9;
 }
 
 

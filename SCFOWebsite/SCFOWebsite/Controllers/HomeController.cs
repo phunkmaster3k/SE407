@@ -21,25 +21,6 @@ namespace SCFOWebsite.Controllers
 
             ViewBag.RSSList = items;
 
-            //foreach (SyndicationItem item in feed.Items)
-            //{
-
-                /*Console.WriteLine(item.Title.Text);
-                Console.WriteLine(item.Summary.Text);
-                Console.WriteLine(item.Links[0].Uri);
-                if (item.Categories.Count > 0)
-                {
-                    Console.WriteLine(item.Categories[0].Name);
-                }*/
-
-
-
-
-            //}
-
-
-
-
             return View();
         }
 
@@ -56,5 +37,14 @@ namespace SCFOWebsite.Controllers
 
             return View();
         }
+
+        public ActionResult ShowAll()
+        {
+            ViewBag.Message = "test";
+
+            return View();
+        }
+
+
     }
 }
