@@ -9,7 +9,14 @@
 
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
+    
+    @{       
+        var random = new Random();
+        ViewBag.color = String.Format("#{0:X6}", random.Next(0x1000000));
+    }
+    <h3 style="color:@ViewBag.color">Message of the day</h3>
+    
+    <div class="navbar navbar-inverse">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
