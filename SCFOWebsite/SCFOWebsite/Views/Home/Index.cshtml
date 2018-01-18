@@ -1,0 +1,33 @@
+﻿@ViewBag.RSSList
+
+@{
+    ViewBag.Title = "Home Page";
+    var count = 0;  
+}
+
+<br />
+
+<div class="jumbotron">
+    <h1>SCFO</h1>
+    <p class="lead">Star Citizen Fleet Organizer</p>
+</div>
+<h2 style="text-shadow: 2px 2px black">Star Citizen News</h2>
+<hr />
+
+@foreach (var item in ViewBag.RSSList)
+{
+    if (count > 8) { break; }
+    else { count++; }
+    <div class="col-md-4" style="margin-bottom:10px">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">@item.Title.Text</h5>
+                <p class="card-text">@item.Summary.Text</p>
+                <a href="@item.Links[0].Uri" class="btn btn-link" style="float:right">Link to article</a>
+            </div>
+        </div>
+    </div>
+}
+
+
+  
