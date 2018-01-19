@@ -1,0 +1,23 @@
+﻿
+@{
+    ViewBag.Title = "AddShips";
+}
+
+<h2>AddShips</h2>
+<br />
+<div class="row">
+    <div class="col" style="background-color:black"> 
+            @using (Html.BeginForm())
+            {
+                @Html.ListBox("lbShips", new SelectList(ViewBag.ships));
+                <br />
+                @Html.Label("Price", new { @class = "shiplbl" });
+                @Html.TextBox("price");
+                <br />
+                <input type="submit" value="Add" />
+            }
+           
+</div>
+</div>
+
+

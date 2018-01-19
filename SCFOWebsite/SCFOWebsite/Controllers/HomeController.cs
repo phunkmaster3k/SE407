@@ -24,26 +24,44 @@ namespace SCFOWebsite.Controllers
             return View();
         }
 
-        public ActionResult Organizations()
+        public ActionResult Organizations(string id)
         {
-            ViewBag.Message = "Orgs";
 
+            var text = "";
+            if (id != null )
+            {
+                if (id.Equals("ALL")) { text = id + " Orgs"; }
+                else {
+                    //placeholder for database getbyid
+                    text = "Org with id " + id;
+                }
+            }
+            ViewBag.TableTitle = text;
+            ViewBag.userId = 1;
             return View();
         }
 
         public ActionResult Ships()
         {
             ViewBag.Message = "Ships";
-
             return View();
         }
 
-        public ActionResult ShowAll()
+        public ActionResult AddShips()
         {
-            ViewBag.Message = "test";
+            List<string> ships = new List<string>();
+            ships.Add("Aurora MR");
+            ships.Add("Constellation Aquila");
+            ships.Add("Avenger Titan");
+            ships.Add("Hurricane");
+            ships.Add("Reclaimer");
+
+            ViewBag.ships = ships;
 
             return View();
         }
+
+
 
 
     }

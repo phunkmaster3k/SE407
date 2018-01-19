@@ -1,26 +1,30 @@
-﻿@ViewBag.Message
-
-@{
+﻿@{
     ViewBag.Title = "Organizations";
 }
 
 <h2>@ViewBag.Title</h2>
-@Html.ActionLink("Display All Ships", "ShowAll", "Home", null, new { @class = "btn btn-primary btn-large" })
-@Html.ActionLink("Display My Ships", "Organizations", "Home", new { @class = "btn btn-primary btn-large" })
+@Html.ActionLink("Display All", "Organizations", "Home", new { @id = "ALL" }, new { @class = "btn btn-primary btn-large" })
+@Html.ActionLink("Display My Org", "Organizations", "Home", new { @id = @ViewBag.userId }, new { @class = "btn btn-primary btn-large" })
 <br />
 <br />
-<h4>@ViewBag.Message</h4>
-<div class="row">
-    <div class="col-md-6 myTable" style="width:auto">
-        <table class="table table-striped" style="width:auto">
-            <thead class="thead-light">
-                <tr>
-                    <th>Org Name</th>
-                    <th>Members</th>
-                    <th>Language</th>
-                    <th>Role</th>
-                </tr>
-            </thead>
-        </table>
+<h4 style="color:white">@ViewBag.TableTitle</h4>
+@{ if (ViewBag.TableTitle != "")
+    {
+        <div class="row">
+            <div class="col-md-6 myTable" style="width:auto">
+                <table class="table table-striped" style="width:auto">
+                    <thead class="thead-light">
+                        <tr>
+                            <th>Org Name</th>
+                            <th>Members</th>
+                            <th>Language</th>
+                            <th>Role</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
         </div>
-    </div>
+
+    }
+}   
+

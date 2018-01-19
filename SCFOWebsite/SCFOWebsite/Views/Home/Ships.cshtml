@@ -1,9 +1,12 @@
 ﻿
 @{
-    ViewBag.Title = "Ships";
+    ViewBag.Title = "My Ships";
 }
 
 <h2>@ViewBag.Title</h2>
+@Html.ActionLink("Add Ships", "AddShips", "Home", null , new { @class = "btn btn-primary btn-large" })
+<br />
+<br />
 <div class="row">
     <div class="col-md-6 myTable" style="width:auto">
         <table class="table table-striped" style="width:auto">
