@@ -6,18 +6,23 @@
 <h2>AddShips</h2>
 <br />
 <div class="row">
-    <div class="col" style="background-color:black"> 
-            @using (Html.BeginForm())
+    <div class="col-md-4 myTable" style="padding:20px"> 
+            @using (Html.BeginForm("AddShips", "Home", FormMethod.Post))
             {
-                @Html.ListBox("lbShips", new SelectList(ViewBag.ships));
+                @Html.Label("Ship Name");
+                @Html.ListBox("lbShips", new SelectList(ViewBag.ships), new { @class = "form-control" });
                 <br />
-                @Html.Label("Price", new { @class = "shiplbl" });
-                @Html.TextBox("price");
+                @Html.Label("Price");
+                @Html.TextBox("price", null, new { @class = "form-control" });
                 <br />
-                <input type="submit" value="Add" />
-            }
-           
+                <input type="submit" value="Add" class="btn btn-primary" />
+            }          
+    </div>
+    
+    <div class="col-md-4 myTable" style="margin-left:20px">
+        <p>@ViewBag.shipname @ViewBag.shipprice</p>
+    </div>
 </div>
-</div>
+
 
 

@@ -34,15 +34,6 @@ textarea {
     color:aquamarine;
 }
 
-.shiplbl {
-    color:white;
-}
-
-.col {
-    padding:30px;
-}
-
-
 .card { 
     background: linear-gradient(#3d0a55, navy);
     opacity: .9;

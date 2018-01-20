@@ -10,6 +10,8 @@ namespace SCFOWebsite.Controllers
 {
     public class HomeController : Controller
     {
+
+
         public ActionResult Index()
         {
             string url = "https://robertsspaceindustries.com/comm-link/rss";
@@ -37,6 +39,7 @@ namespace SCFOWebsite.Controllers
                 }
             }
             ViewBag.TableTitle = text;
+            // this will come from user later
             ViewBag.userId = 1;
             return View();
         }
@@ -47,7 +50,7 @@ namespace SCFOWebsite.Controllers
             return View();
         }
 
-        public ActionResult AddShips()
+        public ActionResult AddShips(string price, string lbShips)
         {
             List<string> ships = new List<string>();
             ships.Add("Aurora MR");
@@ -57,9 +60,14 @@ namespace SCFOWebsite.Controllers
             ships.Add("Reclaimer");
 
             ViewBag.ships = ships;
+            ViewBag.shipname = lbShips;
+            ViewBag.shipprice = price;
 
             return View();
         }
+
+       
+        
 
 
 
