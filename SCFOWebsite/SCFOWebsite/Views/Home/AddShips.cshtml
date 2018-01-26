@@ -1,4 +1,4 @@
-﻿
+﻿@model SCFOWebsite.ViewModels.Home.ShipsViewModel
 @{
     ViewBag.Title = "AddShips";
 }
@@ -10,7 +10,7 @@
             @using (Html.BeginForm("AddShips", "Home", FormMethod.Post))
             {
                 @Html.Label("Ship Name");
-                @Html.ListBox("lbShips", new SelectList(ViewBag.ships), new { @class = "form-control" });
+                @Html.ListBox("lbShips", new SelectList(Model.ships), new { @class = "form-control" });
                 <br />
                 @Html.Label("Price");
                 @Html.TextBox("price", null, new { @class = "form-control" });

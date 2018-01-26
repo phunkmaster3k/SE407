@@ -1,0 +1,13 @@
+﻿@model InClassWork.ViewModels.Home.ShowLangsViewModel
+
+<div class="row">
+    <div class="col-xs-6">
+        @Html.ListBox("langs", Model.CulturesList)
+    </div>
+    <div class="col-xs-6">
+        @Html.DropDownList("langs", Model.CulturesList)
+    </div>
+</div>
+
+
+

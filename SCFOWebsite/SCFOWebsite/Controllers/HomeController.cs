@@ -15,15 +15,11 @@ namespace SCFOWebsite.Controllers
         public ActionResult Index()
         {
             string url = "https://robertsspaceindustries.com/comm-link/rss";
-            XmlReader reader = XmlReader.Create(url);
-            SyndicationFeed feed = SyndicationFeed.Load(reader);
-            reader.Close();
-
-            List<SyndicationItem> items = feed.Items.ToList();
-
-            ViewBag.RSSList = items;
-
-            return View();
+           
+            //passing in url so i can use RRSViewModel with any feed
+            var viewModel = new ViewModels.Home.RSSViewModel(url);
+           
+            return View(viewModel);
         }
 
         public ActionResult Organizations(string id)
@@ -52,24 +48,17 @@ namespace SCFOWebsite.Controllers
 
         public ActionResult AddShips(string price, string lbShips)
         {
-            List<string> ships = new List<string>();
-            ships.Add("Aurora MR");
-            ships.Add("Constellation Aquila");
-            ships.Add("Avenger Titan");
-            ships.Add("Hurricane");
-            ships.Add("Reclaimer");
 
-            ViewBag.ships = ships;
+            var viewModel = new ViewModels.Home.ShipsViewModel();
+
+            //not putting these in the model for now, will change where they come from later when the DB gets implemented
             ViewBag.shipname = lbShips;
             ViewBag.shipprice = price;
 
-            return View();
+            return View(viewModel);
         }
 
        
-        
-
-
 
 
     }

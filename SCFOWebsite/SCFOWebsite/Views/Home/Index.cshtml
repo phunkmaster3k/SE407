@@ -1,4 +1,4 @@
-﻿
+﻿@model SCFOWebsite.ViewModels.Home.RSSViewModel
 
 @{ 
     ViewBag.Title = "Home Page";
@@ -14,7 +14,7 @@
 <h2 style="text-shadow: 2px 2px black">Star Citizen News</h2>
 <hr />
 
-@foreach (var item in ViewBag.RSSList)
+@foreach (var item in Model.RSSList)
 {
     if (count > 8) { break; }
     else { count++; }
