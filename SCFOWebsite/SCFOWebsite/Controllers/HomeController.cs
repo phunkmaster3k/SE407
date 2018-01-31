@@ -1,4 +1,6 @@
-﻿using System;
+﻿using SCFOWebsite.Models;
+using SCFOWebsite.ViewModels.Home;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -37,6 +39,12 @@ namespace SCFOWebsite.Controllers
             ViewBag.TableTitle = text;
             // this will come from user later
             ViewBag.userId = 1;
+
+
+
+
+
+
             return View();
         }
 
@@ -48,8 +56,8 @@ namespace SCFOWebsite.Controllers
 
         public ActionResult AddShips(string price, string lbShips)
         {
-
-            var viewModel = new ViewModels.Home.ShipsViewModel();
+            var factory = new ShipFactory();
+            var viewModel = new ShipsViewModel(factory.Ships);
 
             //not putting these in the model for now, will change where they come from later when the DB gets implemented
             ViewBag.shipname = lbShips;
