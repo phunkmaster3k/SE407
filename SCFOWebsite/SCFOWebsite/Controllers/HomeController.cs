@@ -41,11 +41,12 @@ namespace SCFOWebsite.Controllers
             ViewBag.userId = 1;
 
 
+            var factory = new OrgFactory();
+            var viewModel = new OrgViewModel(factory.Orgs);
 
 
 
-
-            return View();
+            return View(viewModel);
         }
 
         public ActionResult Ships()

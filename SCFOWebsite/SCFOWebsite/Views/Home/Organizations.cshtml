@@ -1,4 +1,6 @@
-﻿@{
+﻿@model SCFOWebsite.ViewModels.Home.OrgViewModel
+
+@{
     ViewBag.Title = "Organizations";
 }
 
@@ -17,9 +19,16 @@
                         <tr>
                             <th>Org Name</th>
                             <th>Members</th>
-                            <th>Language</th>
                             <th>Role</th>
                         </tr>
+                        @foreach (var item in Model.OrgsList)
+                        {
+                            <tr>
+                                <td>@item.Name</td>
+                                <td>@item.Members</td>
+                                <td>@item.Focus</td>
+                            </tr>
+                        }
                     </thead>
                 </table>
             </div>
