@@ -10,7 +10,7 @@ namespace InClassWork.Models
     {
 
         public DbSet<Car> Cars { get; set; }
-        public CarFactory() : base("name=DefaultConnection")
+        public CarFactory()// : base("name=DefaultConnection")
         {
             Database.SetInitializer(new CarIntializer());
         }

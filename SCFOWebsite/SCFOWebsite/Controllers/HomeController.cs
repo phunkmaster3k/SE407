@@ -67,7 +67,14 @@ namespace SCFOWebsite.Controllers
             return View(viewModel);
         }
 
-       
+        public ActionResult JoinOrg()
+        {
+
+
+            return View();
+        }
+
+
 
 
     }

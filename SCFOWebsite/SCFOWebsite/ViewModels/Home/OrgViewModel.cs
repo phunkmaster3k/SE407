@@ -13,8 +13,7 @@ namespace SCFOWebsite.ViewModels.Home
 
         public OrgViewModel(IEnumerable<Org> orgs)
         {
-            OrgsList = orgs;
-            
+            OrgsList = orgs;        
         }
     }
 }

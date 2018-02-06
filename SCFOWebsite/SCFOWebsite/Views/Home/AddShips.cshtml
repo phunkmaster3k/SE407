@@ -12,6 +12,9 @@
                 @Html.Label("Ship Name");
                 @Html.ListBox("lbShips", Model.ShipsList, new { @class = "form-control" } );
                 <br />
+                @Html.Label("Quantity");
+                @Html.TextBox("quantity", null, new { @class = "form-control" });
+                <br />
                 @Html.Label("Price");
                 @Html.TextBox("price", null, new { @class = "form-control" });
                 <br />
