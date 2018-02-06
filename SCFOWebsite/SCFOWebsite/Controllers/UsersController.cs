@@ -27,5 +27,26 @@ namespace SCFOWebsite.Controllers
 
             return View();
         }
+
+        public ActionResult LoggedIn()
+        {
+
+            var userExists = false;
+            if (userExists)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            else
+            {
+                ViewBag.res = "Invalid Login";
+                return View("Response");
+            }
+           
+        }
+
+        public ActionResult Registered()
+        {
+            return RedirectToAction("Index", "Home");
+        }
     }
 }
