@@ -1,0 +1,30 @@
+﻿ 
+@model List<InClassWork.Models.Car>
+
+@{
+    ViewBag.Title = "ListOfCars";
+}
+
+<h2>List Of Cars</h2>
+<div class="row">
+    <div class="col-md-8">
+        @using (Html.BeginForm("ListOfCars", "Cars"))
+        {
+            @Html.TextBox("searchStr")
+            <input type="submit" value="Find Cars" />
+        }
+        <table class="table-striped table-bordered table-responsive">
+            @foreach (var car in Model)
+            {
+                <tr>
+                    <td>@car.Model</td>
+                    <td>@car.MaxSpeed</td>
+                    <td>@Html.ActionLink("Details", "Details", new { id = car.Car_ID })</td>
+                </tr>
+                }
+        </table>
+    </div>
+</div>
+
+
+

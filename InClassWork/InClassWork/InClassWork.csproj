@@ -209,6 +209,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CarsController.cs" />
+    <Compile Include="Controllers\CarsCRUDController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Global.asax.cs">
@@ -285,6 +286,13 @@
     <Content Include="Views\Home\Action1.cshtml" />
     <Content Include="Views\Home\ShowLangs.cshtml" />
     <Content Include="Views\Cars\CarsList.cshtml" />
+    <Content Include="Views\Cars\ListOfCars.cshtml" />
+    <Content Include="Views\Cars\Details.cshtml" />
+    <Content Include="Views\CarsCRUD\Create.cshtml" />
+    <Content Include="Views\CarsCRUD\Delete.cshtml" />
+    <Content Include="Views\CarsCRUD\Details.cshtml" />
+    <Content Include="Views\CarsCRUD\Edit.cshtml" />
+    <Content Include="Views\CarsCRUD\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
