@@ -54,6 +54,8 @@ textarea {
 .myTable {
     background-color: white;
     border-radius: 5px;
+    clear:both;
+    margin-top:10px;
 }
 
 h2 {

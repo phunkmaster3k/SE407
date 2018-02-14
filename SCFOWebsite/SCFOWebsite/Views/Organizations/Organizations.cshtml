@@ -5,15 +5,35 @@
 }
 
 <h2>@ViewBag.Title</h2>
-@Html.ActionLink("Display All", "Organizations", "Home", new { @id = "ALL" }, new { @class = "btn btn-primary btn-large" })
-@Html.ActionLink("Display My Org", "Organizations", "Home", new { @id = @ViewBag.userId }, new { @class = "btn btn-primary btn-large" })
+@Html.ActionLink("Display All", "Organizations", "Organizations", new { @id = "ALL" }, new { @class = "btn btn-primary btn-large" })
+@Html.ActionLink("Display My Org", "Organizations", "Organizations", new { @id = @ViewBag.userId }, new { @class = "btn btn-primary btn-large" })
+<br />
+<br />
+<div class="col-md-4 myTable" style="padding:10px; width:auto">
+@using (Html.BeginForm("OrgSearch", "Organizations"))
+{
+    @Html.TextBox("searchOrg", null, new { @class = "form-control" })
+    <br />
+    <input type="submit" value="Find Organization" class="btn btn-primary btn-large" />
+    
+    <span>&nbsp By: </span>
+    @Html.Label("Name", new { @class = "form-contol"})
+    <span>&nbsp</span>
+    @Html.RadioButton("by", "Name", true, new { @class = "form-contol" })
+    <span>&nbsp</span>
+    @Html.Label("Focus", new { @class = "form-contol" })
+    <span>&nbsp</span>
+    @Html.RadioButton("by", "Focus", false, new { @class = "form-contol" })
+    <br />
+}
+</div>
 <br />
 <br />
 <h4 style="color:white">@ViewBag.TableTitle</h4>
 @{ if (ViewBag.TableTitle != "")
     {
         <div class="row">
-            <div class="col-md-6 myTable" style="width:auto">
+            <div class="col-md-4 myTable" style="width:auto">
                 <table class="table table-striped" style="width:auto">
                     <thead class="thead-light">
                         <tr>

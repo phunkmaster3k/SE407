@@ -13,8 +13,11 @@ namespace SCFOWebsite
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+            routes.MapRoute(" OrgSearch", "Organizations/OrgSearch",
+               new { controller = "Organizations", action = "OrgSearch" });
+
             routes.MapRoute(" Organizations", "Organizations/{id}",
-                new { controller = "Home", action = "Organizations", id = UrlParameter.Optional });
+                new { controller = "Organizations", action = "Organizations", id = UrlParameter.Optional });
 
             routes.MapRoute(" Ships", "Ships",
                 new { controller = "Home", action = "Ships" });

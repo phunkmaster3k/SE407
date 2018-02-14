@@ -24,30 +24,7 @@ namespace SCFOWebsite.Controllers
             return View(viewModel);
         }
 
-        public ActionResult Organizations(string id)
-        {
-
-            var text = "";
-            if (id != null )
-            {
-                if (id.Equals("ALL")) { text = id + " Orgs"; }
-                else {
-                    //placeholder for database getbyid
-                    text = "Org with id " + id;
-                }
-            }
-            ViewBag.TableTitle = text;
-            // this will come from user later
-            ViewBag.userId = 1;
-
-
-            var factory = new OrgFactory();
-            var viewModel = new OrgViewModel(factory.Orgs);
-
-
-
-            return View(viewModel);
-        }
+       
 
         public ActionResult Ships()
         {
