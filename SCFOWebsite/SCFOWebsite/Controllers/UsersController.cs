@@ -2,8 +2,11 @@
 using SCFOWebsite.ViewModels.Home;
 using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
+using System.Web.Configuration;
 using System.Web.Mvc;
 
 namespace SCFOWebsite.Controllers
@@ -23,6 +26,27 @@ namespace SCFOWebsite.Controllers
         public ActionResult Login()
         {
 
+            SqlConnection con = new SqlConnection(WebConfigurationManager.ConnectionStrings["NEITCON"].ConnectionString);
+
+            SqlCommand cmd = new SqlCommand();
+            SqlDataReader reader;
+
+            cmd.CommandText = "SELECT * FROM test";
+            cmd.CommandType = CommandType.Text;
+            cmd.Connection = con;
+
+            con.Open();
+
+            reader = cmd.ExecuteReader();
+
+            string UserName;
+            while (reader.Read())
+            {
+                UserName = (string)reader["Name"];
+               
+            }
+            //var y = UserName;
+            var x = 1;
 
 
             return View();
