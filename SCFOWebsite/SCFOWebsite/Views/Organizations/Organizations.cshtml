@@ -5,56 +5,55 @@
 }
 
 <h2>@ViewBag.Title</h2>
-@Html.ActionLink("Display All", "Organizations", "Organizations", new { @id = "ALL" }, new { @class = "btn btn-primary btn-large" })
-@Html.ActionLink("Display My Org", "Organizations", "Organizations", new { @id = @ViewBag.userId }, new { @class = "btn btn-primary btn-large" })
 <br />
-<br />
-<div class="col-md-4 myTable" style="padding:10px; width:auto">
-@using (Html.BeginForm("OrgSearch", "Organizations"))
-{
-    @Html.TextBox("searchOrg", null, new { @class = "form-control" })
-    <br />
-    <input type="submit" value="Find Organization" class="btn btn-primary btn-large" />
-    
-    <span>&nbsp By: </span>
-    @Html.Label("Name", new { @class = "form-contol"})
-    <span>&nbsp</span>
-    @Html.RadioButton("by", "Name", true, new { @class = "form-contol" })
-    <span>&nbsp</span>
-    @Html.Label("Focus", new { @class = "form-contol" })
-    <span>&nbsp</span>
-    @Html.RadioButton("by", "Focus", false, new { @class = "form-contol" })
-    <br />
-}
-</div>
-<br />
-<br />
-<h4 style="color:white">@ViewBag.TableTitle</h4>
-@{ if (ViewBag.TableTitle != "")
-    {
-        <div class="row">
-            <div class="col-md-4 myTable" style="width:auto">
-                <table class="table table-striped" style="width:auto">
-                    <thead class="thead-light">
-                        <tr>
-                            <th>Org Name</th>
-                            <th>Members</th>
-                            <th>Role</th>
-                        </tr>
-                        @foreach (var item in Model.OrgsList)
-                        {
-                            <tr>
-                                <td>@item.Name</td>
-                                <td>@item.Members</td>
-                                <td>@item.Focus</td>
-                                <td>@Html.ActionLink("Join", "JoinOrg", "Home", null, new { @class = "btn btn-primary btn-large" })</td>
-                            </tr>
-                        }
-                    </thead>
-                </table>
-            </div>
-        </div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-1 myTable">
+            <h3>All Organizations</h3>
+            @using (Html.BeginForm("OrgSearch", "Organizations", new { @class = "myTest" }))
+            {
+                @Html.TextBox("searchOrg", null, new { @class = "form-control" })
+                <br />
+                <input type="submit" value="Find Organization" class="btn btn-primary btn-large" />
+                <span>&nbsp By: </span>
+                <div class="btn-group" data-toggle="buttons">
+                    <label class="btn btn-primary active">
+                        @Html.RadioButton("by", "Name", true, new { @class = "form-contol" })
+                        Name
+                    </label>
+                    <label class="btn btn-primary">
+                        @Html.RadioButton("by", "Focus", false, new { @class = "form-contol" })
+                        Focus
+                    </label>
+                </div>
+            }
 
-    }
-}   
+            <table class="table table-striped" style="width:auto">
+                <thead class="thead-light">
+                    <tr>
+                        <th>Org Name</th>
+                        <th>Members</th>
+                        <th>Role</th>
+                    </tr>
+                    @foreach (var item in Model.OrgsList)
+                    {
+                        <tr>
+                            <td>@item.Name</td>
+                            <td>@item.Members</td>
+                            <td>@item.Focus</td>
+                            <td>@Html.ActionLink("Join", "JoinOrg", "Home", null, new { @class = "btn btn-primary btn-large" })</td>
+                        </tr>
+                    }
+                </thead>
+            </table>
+        </div>
+        @if (Session["loggedIn"] != null)
+        {
+            <div class="col-md-1 myTable" style="margin-left:10px">
+                @{ Html.RenderAction("mike", "controller"); }
+            </div>
+        }
+
+    </div>
+</div>
 

@@ -11,23 +11,11 @@ namespace SCFOWebsite.Controllers
     public class OrganizationsController : Controller
     {
         
-        public ActionResult Organizations(string id)
+        public ActionResult Organizations()
         {
-            var text = "";
-            if (id != null)
-            {
-                if (id.Equals("ALL")) { text = id + " Orgs"; }
-                else {
-                    //placeholder for database getbyid
-                    text = "Org with id " + id;
-                }
-            }
-            ViewBag.TableTitle = text;
-            // this will come from user later
-            ViewBag.userId = 1;
-
             var factory = new OrgFactory();
             var viewModel = new OrgViewModel(factory.Orgs);
+
             
             return View(viewModel);
         }

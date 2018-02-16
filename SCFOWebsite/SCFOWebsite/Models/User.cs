@@ -17,5 +17,7 @@ namespace SCFOWebsite.Models
         public string email { get; set; }
         public string pwd { get; set; }
         public bool admin { get; set; }
+
+        
     }
 }

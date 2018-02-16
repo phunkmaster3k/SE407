@@ -25,8 +25,11 @@ namespace SCFOWebsite.Controllers
 
         public ActionResult Login()
         {
+            var factory = new UserFactory();
 
-            SqlConnection con = new SqlConnection(WebConfigurationManager.ConnectionStrings["NEITCON"].ConnectionString);
+            Session["LoggedIn"] = factory.Users.First();
+
+            /*SqlConnection con = new SqlConnection(WebConfigurationManager.ConnectionStrings["NEITCON"].ConnectionString);
 
             SqlCommand cmd = new SqlCommand();
             SqlDataReader reader;
@@ -44,10 +47,7 @@ namespace SCFOWebsite.Controllers
             {
                 UserName = (string)reader["Name"];
                
-            }
-            //var y = UserName;
-            var x = 1;
-
+            } */
 
             return View();
         }
@@ -55,7 +55,8 @@ namespace SCFOWebsite.Controllers
         public ActionResult LoggedIn()
         {
 
-            var userExists = false;
+            
+            var userExists = true;
             if (userExists)
             {
                 return RedirectToAction("Index", "Home");
