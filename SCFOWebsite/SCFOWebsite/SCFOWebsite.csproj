@@ -200,8 +200,10 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\OrganizationsController.cs" />
+    <Compile Include="Controllers\OrgCRUDController.cs" />
     <Compile Include="Controllers\ShipsController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
+    <Compile Include="Controllers\UsersCRUDController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -286,6 +288,20 @@
     <Content Include="Views\Users\Login.cshtml" />
     <Content Include="Views\Users\Register.cshtml" />
     <Content Include="Views\Users\Response.cshtml" />
+    <Content Include="Views\UsersCRUD\Create.cshtml" />
+    <Content Include="Views\UsersCRUD\Delete.cshtml" />
+    <Content Include="Views\UsersCRUD\Details.cshtml" />
+    <Content Include="Views\UsersCRUD\Edit.cshtml" />
+    <Content Include="Views\UsersCRUD\Index.cshtml" />
+    <Content Include="Views\UsersCRUD\List.cshtml" />
+    <Content Include="Views\UsersCRUD\pEdit.cshtml" />
+    <Content Include="Views\OrgCRUD\Create.cshtml" />
+    <Content Include="Views\OrgCRUD\Delete.cshtml" />
+    <Content Include="Views\OrgCRUD\Details.cshtml" />
+    <Content Include="Views\OrgCRUD\Edit.cshtml" />
+    <Content Include="Views\OrgCRUD\Index.cshtml" />
+    <Content Include="Views\Organizations\OrgSearch.cshtml" />
+    <Content Include="Views\UsersCRUD\OrgName.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

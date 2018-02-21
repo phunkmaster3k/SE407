@@ -1,0 +1,60 @@
+﻿@model IEnumerable<SCFOWebsite.Models.User>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.orgId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.username)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.handle)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.admin)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.orgId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.username)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.handle)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.admin)
+            </td>
+            <td>
+                @{ SCFOWebsite.Models.User u = (SCFOWebsite.Models.User)Session["loggedIn"];
+                    if (u.admin == true)
+                    {
+                    <span>@Html.ActionLink("Edit", "Edit", new { id = item.userId }) | 
+                          @Html.ActionLink("Details", "Details", new { id = item.userId }) |
+                          @Html.ActionLink("Delete", "Delete", new { id = item.userId })</span>
+                        }
+
+                    }
+               
+            </td>
+        </tr>
+    }
+
+</table>

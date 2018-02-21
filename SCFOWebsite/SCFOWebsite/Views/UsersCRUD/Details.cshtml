@@ -1,0 +1,72 @@
+﻿@model SCFOWebsite.Models.User
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal myTable">
+        <dt>
+            @Html.DisplayNameFor(model => model.userId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.userId)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.orgId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.orgId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.username)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.username)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.handle)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.handle)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.pwd)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.pwd)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.admin)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.admin)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.userId }, new {  @class = "btn btn-primary" }) |
+    @Html.ActionLink("Back to List", "Organizations", "Organizations", null, new { @class = "btn btn-primary" })
+</p>

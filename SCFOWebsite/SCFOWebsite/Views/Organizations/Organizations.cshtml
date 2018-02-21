@@ -2,58 +2,34 @@
 
 @{
     ViewBag.Title = "Organizations";
+    SCFOWebsite.Models.User u = null;
+    if (Session["loggedIn"] != null)
+    {
+        u = (SCFOWebsite.Models.User)Session["loggedIn"];
+    }
+
 }
 
 <h2>@ViewBag.Title</h2>
 <br />
+<br />
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-1 myTable">
-            <h3>All Organizations</h3>
-            @using (Html.BeginForm("OrgSearch", "Organizations", new { @class = "myTest" }))
+            @if (u != null && u.orgId == 0)
             {
-                @Html.TextBox("searchOrg", null, new { @class = "form-control" })
-                <br />
-                <input type="submit" value="Find Organization" class="btn btn-primary btn-large" />
-                <span>&nbsp By: </span>
-                <div class="btn-group" data-toggle="buttons">
-                    <label class="btn btn-primary active">
-                        @Html.RadioButton("by", "Name", true, new { @class = "form-contol" })
-                        Name
-                    </label>
-                    <label class="btn btn-primary">
-                        @Html.RadioButton("by", "Focus", false, new { @class = "form-contol" })
-                        Focus
-                    </label>
-                </div>
+                Html.ActionLink("Create New Organization", "Create", "OrgCRUD", null, new { @class = "btn btn-primary" });
             }
-
-            <table class="table table-striped" style="width:auto">
-                <thead class="thead-light">
-                    <tr>
-                        <th>Org Name</th>
-                        <th>Members</th>
-                        <th>Role</th>
-                    </tr>
-                    @foreach (var item in Model.OrgsList)
-                    {
-                        <tr>
-                            <td>@item.Name</td>
-                            <td>@item.Members</td>
-                            <td>@item.Focus</td>
-                            <td>@Html.ActionLink("Join", "JoinOrg", "Home", null, new { @class = "btn btn-primary btn-large" })</td>
-                        </tr>
-                    }
-                </thead>
-            </table>
+            @{ Html.RenderAction("OrgSearch"); }
         </div>
-        @if (Session["loggedIn"] != null)
+        @if (u != null)
         {
             <div class="col-md-1 myTable" style="margin-left:10px">
-                @{ Html.RenderAction("mike", "controller"); }
+                @{
+                    Html.RenderAction("OrgName", "UsersCRUD", new { id = u.orgId });
+                    Html.RenderAction("List", "UsersCRUD", new { id = u.orgId });
+                }
             </div>
-        }
-
+         }
     </div>
 </div>
-

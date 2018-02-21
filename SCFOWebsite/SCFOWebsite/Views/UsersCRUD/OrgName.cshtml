@@ -1,0 +1,16 @@
+﻿@model SCFOWebsite.Models.Org
+
+
+
+
+@{
+    SCFOWebsite.Models.User u = (SCFOWebsite.Models.User)Session["loggedIn"];
+    <h1>@Model.Name</h1>
+    if (u.admin == true)
+    {
+        <span>@Html.ActionLink("Edit Organization", "Edit", "OrgCRUD", new { id = u.orgId }, null ) | @Html.ActionLink("Delete Organization", "Delete", "OrgCRUD", new { id = u.orgId }, null )</span>
+        <br />
+        <span>@Html.ActionLink("Add Member", "Create")</span>
+
+    }
+}

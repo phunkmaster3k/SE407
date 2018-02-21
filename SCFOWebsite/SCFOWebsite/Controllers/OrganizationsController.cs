@@ -10,14 +10,13 @@ namespace SCFOWebsite.Controllers
 {
     public class OrganizationsController : Controller
     {
-        
-        public ActionResult Organizations()
-        {
-            var factory = new OrgFactory();
-            var viewModel = new OrgViewModel(factory.Orgs);
 
-            
-            return View(viewModel);
+        private OrgFactory db = new OrgFactory();
+
+
+        public ActionResult Organizations()
+        {        
+            return View();
         }
 
         public ActionResult OrgSearch(string searchOrg, string by)
@@ -40,7 +39,8 @@ namespace SCFOWebsite.Controllers
             var orgsList = orgs.Take(100).ToList();
             var viewModel = new OrgViewModel(orgs);
 
-            return View("Organizations", viewModel);
+            return PartialView(viewModel);
         }
+
     }
 }

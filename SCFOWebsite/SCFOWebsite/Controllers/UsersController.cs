@@ -27,7 +27,10 @@ namespace SCFOWebsite.Controllers
         {
             var factory = new UserFactory();
 
-            Session["LoggedIn"] = factory.Users.First();
+            User user = new User();
+            user = factory.Users.First();
+
+            Session["LoggedIn"] = user;
 
             /*SqlConnection con = new SqlConnection(WebConfigurationManager.ConnectionStrings["NEITCON"].ConnectionString);
 

@@ -1,0 +1,42 @@
+﻿@model SCFOWebsite.Models.Org
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Org</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Members)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Members)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Focus)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Focus)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.OrgId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
