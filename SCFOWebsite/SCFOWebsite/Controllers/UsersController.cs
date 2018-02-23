@@ -18,13 +18,13 @@ namespace SCFOWebsite.Controllers
         {
             var factory = new OrgFactory();
             var viewModel = new OrgViewModel(factory.Orgs);
-
-
             return View(viewModel);
         }
 
         public ActionResult Login()
         {
+
+            //temp stuff!!
             var factory = new UserFactory();
 
             User user = new User();
@@ -70,6 +70,12 @@ namespace SCFOWebsite.Controllers
                 return View("Response");
             }
            
+        }
+
+        public ActionResult Logout()
+        {
+            Session.Abandon();
+            return RedirectToAction("Index", "Home");
         }
 
         public ActionResult Registered()

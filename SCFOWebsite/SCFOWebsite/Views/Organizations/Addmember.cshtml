@@ -1,0 +1,29 @@
+﻿@model List<SCFOWebsite.Models.User>
+
+@using (Html.BeginForm("Addmember", "Organizations"))
+            {
+    @Html.TextBox("searchUser", null, new { @class = "form-control" })
+    <br />
+    <input type="submit" value="Find User" class="btn btn-primary btn-large" />
+                
+}
+<br />
+<table class="table table-striped myTable" style="width:auto; padding:20px">
+    <thead class="thead-light">
+        <tr>
+            <th>User Name</th>
+            <th>Handle</th>
+            <th>email</th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.username</td>
+                <td>@item.handle</td>
+                <td>@item.email</td>
+                <td>@Html.ActionLink("Add", "AddToOrg", "Organizations", new { id = item.userId } , new { @class = "btn btn-primary btn-large" })</td>
+            </tr>
+        }
+    </thead>
+</table>
+

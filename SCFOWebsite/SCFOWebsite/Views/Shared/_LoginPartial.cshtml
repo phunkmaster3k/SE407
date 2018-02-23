@@ -16,7 +16,15 @@
 else
 {
     <ul class="nav navbar-nav navbar-right">
-        <li>@Html.ActionLink("Register", "Create", "UsersCRUD")</li>
-        <li>@Html.ActionLink("Log in", "Login", "Users")</li>
+        @if (Session["loggedIn"] == null)
+        {
+            <li>@Html.ActionLink("Register", "Create", "UsersCRUD")</li>
+            <li>@Html.ActionLink("Log in", "Login", "Users")</li>
+        }
+        else
+        {
+            <li>@Html.ActionLink("My Account", "Details", "UsersCRUD")</li>
+            <li>@Html.ActionLink("Log Out", "Logout", "Users")</li>
+        }
     </ul>
 }

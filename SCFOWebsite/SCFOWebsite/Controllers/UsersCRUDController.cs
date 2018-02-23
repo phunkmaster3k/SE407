@@ -57,10 +57,8 @@ namespace SCFOWebsite.Controllers
         {
             OrgFactory fac = new OrgFactory();
             List<SelectListItem> list = new List<SelectListItem>();
-
             SelectListItem itm = new SelectListItem { Text = "None", Value = "0" };
             list.Add(itm);
-
 
             foreach (Org o in fac.Orgs)
             {
@@ -83,7 +81,7 @@ namespace SCFOWebsite.Controllers
             {
                 db.Users.Add(user);
                 db.SaveChanges();
-                return RedirectToAction("Organizations", "Organizations");
+                return RedirectToAction("login", "Users");
 
             }
 
@@ -143,7 +141,9 @@ namespace SCFOWebsite.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             User user = db.Users.Find(id);
-            db.Users.Remove(user);
+            user.orgId = 0;
+            db.Entry(user).State = EntityState.Modified;
+            //db.Users.Remove(user);
             db.SaveChanges();
             return RedirectToAction("Organizations", "Organizations");
         }

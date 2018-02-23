@@ -302,6 +302,7 @@
     <Content Include="Views\OrgCRUD\Index.cshtml" />
     <Content Include="Views\Organizations\OrgSearch.cshtml" />
     <Content Include="Views\UsersCRUD\OrgName.cshtml" />
+    <Content Include="Views\Organizations\Addmember.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
