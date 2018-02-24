@@ -20,8 +20,33 @@ namespace InClassWork.Models
     {
         protected override void Seed(CarFactory context)
         {
-            context.Cars.Add(new Car() { Model = "Rabbit", MaxSpeed = 300 });
-            context.Cars.Add(new Car() { Model = "Turtle", MaxSpeed = 150 });
+            context.Cars.Add(new Car()
+            {
+                Model = "Conny",
+                MaxSpeed = 300,
+                ImageName = "Conny"
+            });
+
+            context.Cars.Add(new Car()
+            {
+                Model = "Avenger",
+                MaxSpeed = 150,
+                ImageName = "Avenger"
+            });
+
+            context.Cars.Add(new Car()
+            {
+                Model = "Aurora",
+                MaxSpeed = 150,
+                ImageName = "Aurora"
+            });
+
+            context.Cars.Add(new Car()
+            {
+                Model = "Cutlass",
+                MaxSpeed = 150,
+                ImageName = "Cutlass"
+            });
         }
     }
 }

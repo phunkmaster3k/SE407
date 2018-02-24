@@ -10,8 +10,15 @@ namespace InClassWork.Models
     {
         [Key]
         public int Car_ID { get; set; }
+
+        [Required(ErrorMessage = "Car Model is Required")]
+        [RegularExpression("..+", ErrorMessage = "Needs to be 2 characters long")]
         public string Model { get; set; }
+
+        [Range(10,9000)]
         public double MaxSpeed { get; set; }
+
+        public string ImageName { get; set; }
 
     }
 }

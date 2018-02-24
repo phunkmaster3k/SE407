@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using InClassWork.Models;
+using System.Web.Helpers;
 
 namespace InClassWork.Controllers
 {
@@ -122,6 +123,24 @@ namespace InClassWork.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+        public ActionResult picture(int id)
+        {
+            var fac = new CarFactory();
+            var car = fac.Cars.Where(p => p.Car_ID == id).FirstOrDefault();
+
+
+            if (car == null)
+            {
+                return HttpNotFound();
+            }
+
+
+            var img = new WebImage(string.Format("~/Content/Images/{0}.jpg", car.ImageName));
+            img.Resize(100, 100);
+
+            return File(img.GetBytes(), "image/jpg");
         }
     }
 }

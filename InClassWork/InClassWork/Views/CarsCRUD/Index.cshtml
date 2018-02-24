@@ -29,6 +29,9 @@
             @Html.DisplayFor(modelItem => item.MaxSpeed)
         </td>
         <td>
+            <img src='@Url.Action("Picture", new { id = item.Car_ID })' />
+        </td>
+        <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.Car_ID }) |
             @Html.ActionLink("Details", "Details", new { id=item.Car_ID }) |
             @Html.ActionLink("Delete", "Delete", new { id=item.Car_ID })
