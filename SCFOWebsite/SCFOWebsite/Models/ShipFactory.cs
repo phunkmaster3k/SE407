@@ -29,8 +29,10 @@ namespace SCFOWebsite.Models
                 MaxCrew = 5,
                 MinCrew = 1,
                 SCMSpeed = 185,
-                ABSpeed = 950
+                ABSpeed = 950,
+                ImageName = "Constellation"
             });
+
             context.Ships.Add(new Ship()
             {
                 Name = "Cutlass",
@@ -41,7 +43,36 @@ namespace SCFOWebsite.Models
                 MaxCrew = 3,
                 MinCrew = 1,
                 SCMSpeed = 240,
-                ABSpeed = 1150
+                ABSpeed = 1150,
+                ImageName = "cutlass"
+            });
+
+            context.Ships.Add(new Ship()
+            {
+                Name = "Aurora",
+                Manufacturer = "RSI",
+                Role = "Starter",
+                ProductionState = "Flight Ready",
+                CargoCapacity = 3,
+                MaxCrew = 1,
+                MinCrew = 1,
+                SCMSpeed = 190,
+                ABSpeed = 1000,
+                ImageName = "aurora"
+            });
+
+            context.Ships.Add(new Ship()
+            {
+                Name = "Avenger",
+                Manufacturer = "Aegis",
+                Role = "Cargo",
+                ProductionState = "Update Scheduled",
+                CargoCapacity = 8,
+                MaxCrew = 1,
+                MinCrew = 1,
+                SCMSpeed = 270,
+                ABSpeed = 1230,
+                ImageName = "avenger"
             });
         }
     }

@@ -202,6 +202,7 @@
     <Compile Include="Controllers\OrganizationsController.cs" />
     <Compile Include="Controllers\OrgCRUDController.cs" />
     <Compile Include="Controllers\ShipsController.cs" />
+    <Compile Include="Controllers\ShipsCRUDController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Controllers\UsersCRUDController.cs" />
     <Compile Include="Global.asax.cs">
@@ -282,9 +283,7 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Home\Ships.cshtml" />
     <Content Include="Views\Organizations\Organizations.cshtml" />
-    <Content Include="Views\Home\AddShips.cshtml" />
     <Content Include="Views\Users\Login.cshtml" />
     <Content Include="Views\Users\Register.cshtml" />
     <Content Include="Views\Users\Response.cshtml" />
@@ -303,11 +302,16 @@
     <Content Include="Views\Organizations\OrgSearch.cshtml" />
     <Content Include="Views\UsersCRUD\OrgName.cshtml" />
     <Content Include="Views\Organizations\Addmember.cshtml" />
+    <Content Include="Views\Ships\AllShips.cshtml" />
+    <Content Include="Views\ShipsCRUD\Create.cshtml" />
+    <Content Include="Views\ShipsCRUD\Delete.cshtml" />
+    <Content Include="Views\ShipsCRUD\Details.cshtml" />
+    <Content Include="Views\ShipsCRUD\Edit.cshtml" />
+    <Content Include="Views\ShipsCRUD\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Content\Images\" />
-    <Folder Include="Views\Ships\" />
+    <Folder Include="Content\Images\Ships\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

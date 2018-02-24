@@ -24,26 +24,6 @@ namespace SCFOWebsite.Controllers
             return View(viewModel);
         }
 
-       
-
-        public ActionResult Ships()
-        {
-            ViewBag.Message = "Ships";
-            return View();
-        }
-
-        public ActionResult AddShips(string price, string lbShips)
-        {
-            var factory = new ShipFactory();
-            var viewModel = new ShipsViewModel(factory.Ships);
-
-            //not putting these in the model for now, will change where they come from later when the DB gets implemented
-            ViewBag.shipname = lbShips;
-            ViewBag.shipprice = price;
-
-            return View(viewModel);
-        }
-
         public ActionResult JoinOrg()
         {
 

@@ -120,6 +120,8 @@ namespace SCFOWebsite.Controllers
             return View(user);
         }
 
+
+        
         // GET: UsersCRUD/Delete/5
         public ActionResult Delete(int? id)
         {

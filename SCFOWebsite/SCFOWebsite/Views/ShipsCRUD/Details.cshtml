@@ -1,0 +1,90 @@
+﻿@model SCFOWebsite.Models.Ship
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Ship</h4>
+    <hr />
+    <dl class="dl-horizontal myTable">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Manufacturer)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Manufacturer)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Role)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Role)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProductionState)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProductionState)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CargoCapacity)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CargoCapacity)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MaxCrew)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MaxCrew)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MinCrew)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MinCrew)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SCMSpeed)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SCMSpeed)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ABSpeed)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ABSpeed)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ShipId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

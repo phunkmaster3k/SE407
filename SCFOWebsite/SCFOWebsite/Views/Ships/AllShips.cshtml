@@ -1,0 +1,46 @@
+﻿@model IEnumerable<SCFOWebsite.Models.Ship>
+
+@{
+    ViewBag.Title = "AllShips";
+}
+
+<h2>All Ships</h2>
+
+<table class="table table-striped myTable" style="width:auto">
+    <thead class="thead-light">
+        <tr>
+            <th>Image</th>
+            <th>Name</th>
+            <th>Members</th>
+            <th>Role</th>
+            <th>Production State</th>
+            <th>Max Cargo</th>
+            <th>Max Crew</th>
+            <th>Min Crew</th>
+            <th>SCM</th>
+            <th>AB</th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <img src='@Url.Action("Image", "ShipsCRUD", new { id = item.ShipId })' />
+                </td>
+                <td>@item.Name</td>
+                <td>@item.Manufacturer</td>
+                <td>@item.Role</td>
+                <td>@item.ProductionState</td>
+                <td>@item.CargoCapacity</td>
+                <td>@item.MaxCrew</td>
+                <td>@item.MinCrew</td>
+                <td>@item.SCMSpeed</td>
+                <td>@item.ABSpeed</td>
+
+
+
+                <td>@Html.ActionLink("Join", "JoinOrg", "Home", null, new { @class = "btn btn-primary btn-large" })</td>
+            </tr>
+        }
+    </thead>
+</table>
+
