@@ -20,5 +20,9 @@ namespace InClassWork.Models
 
         public string ImageName { get; set; }
 
+        public int Manufacturer_Id { get; set; }
+
+        public virtual Manufacturer manufacturer { get; set; }
+
     }
 }

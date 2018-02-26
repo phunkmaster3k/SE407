@@ -208,10 +208,13 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\Cars1Controller.cs" />
+    <Compile Include="Controllers\Cars2Controller.cs" />
     <Compile Include="Controllers\CarsController.cs" />
     <Compile Include="Controllers\CarsCRUDController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\ManufacturersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -219,7 +222,9 @@
     <Compile Include="Models\Car.cs" />
     <Compile Include="Models\CarFactory.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\InClassWorkContext.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Manufacturer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\Home\CarListViewModel.cs" />
@@ -293,10 +298,21 @@
     <Content Include="Views\CarsCRUD\Details.cshtml" />
     <Content Include="Views\CarsCRUD\Edit.cshtml" />
     <Content Include="Views\CarsCRUD\Index.cshtml" />
+    <Content Include="Views\Manufacturers\Create.cshtml" />
+    <Content Include="Views\Manufacturers\Delete.cshtml" />
+    <Content Include="Views\Manufacturers\Details.cshtml" />
+    <Content Include="Views\Manufacturers\Edit.cshtml" />
+    <Content Include="Views\Manufacturers\Index.cshtml" />
+    <Content Include="Views\Cars2\Create.cshtml" />
+    <Content Include="Views\Cars2\Delete.cshtml" />
+    <Content Include="Views\Cars2\Details.cshtml" />
+    <Content Include="Views\Cars2\Edit.cshtml" />
+    <Content Include="Views\Cars2\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\Images\" />
+    <Folder Include="Views\Cars1\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
