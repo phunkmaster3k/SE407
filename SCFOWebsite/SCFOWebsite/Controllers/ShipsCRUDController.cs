@@ -141,5 +141,68 @@ namespace SCFOWebsite.Controllers
 
             return File(img.GetBytes(), "image/jpg");
         }
+
+        public ActionResult AddShip(int id)
+        {
+            if (Session["LoggedIn"] != null)
+            {
+                PlayerShipsFactory fac = new PlayerShipsFactory();
+                User user = (User)Session["loggedIn"];
+                    
+                fac.playerShips.Add(new PlayerShips()
+                {
+                    shipId = id,
+                    playerId = user.userId,
+                });
+
+                fac.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View("Index");
+        }
+
+        public ActionResult myShips()
+        {
+            PlayerShipsFactory psfac = new PlayerShipsFactory();
+            ShipFactory sfac = new ShipFactory();
+            User user = (User)Session["loggedIn"];
+
+            var IDs = (from p in psfac.playerShips
+                       where p.playerId == user.userId
+                       select p.shipId).ToArray();
+
+            List<Ship> myShips = new List<Ship>();
+            //because we wan to have duplicates shown
+            foreach (int i in IDs)
+            {
+                myShips.Add(sfac.Ships.FirstOrDefault(s => s.ShipId == i));
+            }
+
+            return PartialView(myShips.OrderBy(o => o.ShipId).AsEnumerable());
+        }
+
+        public ActionResult removeShip(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            PlayerShipsFactory psfac = new PlayerShipsFactory();
+            User user = (User)Session["loggedIn"];
+
+            var x = psfac.playerShips.FirstOrDefault(s => s.shipId == id && s.playerId == user.userId);
+
+            Ship ship = db.Ships.Find(id);
+            if (x == null)
+            {
+                return HttpNotFound();
+            }
+
+            psfac.playerShips.Remove(x);
+            psfac.SaveChanges();
+
+            return RedirectToAction("Index");
+        }
     }
 }

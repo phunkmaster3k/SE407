@@ -2,6 +2,11 @@
 
 @{
     ViewBag.Title = "AllShips";
+    SCFOWebsite.Models.User u = null;
+    if (Session["loggedIn"] != null)
+    {
+        u = (SCFOWebsite.Models.User)Session["loggedIn"];
+    }
 }
 
 <h2>All Ships</h2>
@@ -36,9 +41,12 @@
                 <td>@item.SCMSpeed</td>
                 <td>@item.ABSpeed</td>
 
+                @if (u != null)
+                {
+                    <td>@Html.ActionLink("Add", "JoinOrg", "Home",new { id = item.ShipId }, new { @class = "btn btn-primary btn-large" })</td>
+                }
 
-
-                <td>@Html.ActionLink("Join", "JoinOrg", "Home", null, new { @class = "btn btn-primary btn-large" })</td>
+                
             </tr>
         }
     </thead>

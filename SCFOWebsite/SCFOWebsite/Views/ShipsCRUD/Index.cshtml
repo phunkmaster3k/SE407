@@ -1,14 +1,15 @@
 ﻿@model IEnumerable<SCFOWebsite.Models.Ship>
 
 @{
-    ViewBag.Title = "Index";
+    SCFOWebsite.Models.User u = null;
+    if (Session["loggedIn"] != null)
+    {
+        u = (SCFOWebsite.Models.User)Session["loggedIn"];
+    }
 }
 
-<h2>Index</h2>
+<h2>All Ships</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-default" } )
-</p>
 <table class="table myTable">
     <tr>
         <th>Image</th>
@@ -73,11 +74,17 @@
             @Html.DisplayFor(modelItem => item.ABSpeed)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ShipId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ShipId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ShipId })
+           @if (u != null)
+           {
+            @Html.ActionLink("Add to my ships", "AddShip", new { id = item.ShipId })
+           }
+            
         </td>
     </tr>
 }
 
 </table>
+@if (u != null)
+{
+    Html.RenderAction("myShips");
+}

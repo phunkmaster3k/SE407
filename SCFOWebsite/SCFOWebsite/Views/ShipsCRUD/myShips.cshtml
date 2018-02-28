@@ -1,0 +1,75 @@
+﻿@model IEnumerable<SCFOWebsite.Models.Ship>
+
+<h2>My Ships</h2>
+
+    <table class="table myTable">
+        <tr>
+            <th>Image</th>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Manufacturer)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Role)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductionState)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CargoCapacity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MaxCrew)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MinCrew)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SCMSpeed)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ABSpeed)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td><img src='@Url.Action("Image", "ShipsCRUD", new { id = item.ShipId })' /></td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Manufacturer)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Role)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProductionState)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CargoCapacity)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MaxCrew)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MinCrew)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SCMSpeed)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ABSpeed)
+                </td>
+                <td>
+                    @Html.ActionLink("Remove", "RemoveShip", new { id = item.ShipId })
+                </td>
+            </tr>
+        }
+
+    </table>

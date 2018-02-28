@@ -213,6 +213,8 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Org.cs" />
     <Compile Include="Models\OrgFactory.cs" />
+    <Compile Include="Models\PlayerShips.cs" />
+    <Compile Include="Models\PlayerShipsFactory.cs" />
     <Compile Include="Models\Ship.cs" />
     <Compile Include="Models\ShipFactory.cs" />
     <Compile Include="Models\User.cs" />
@@ -308,6 +310,7 @@
     <Content Include="Views\ShipsCRUD\Details.cshtml" />
     <Content Include="Views\ShipsCRUD\Edit.cshtml" />
     <Content Include="Views\ShipsCRUD\Index.cshtml" />
+    <Content Include="Views\ShipsCRUD\myShips.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
