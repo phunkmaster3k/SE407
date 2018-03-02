@@ -13,8 +13,11 @@ namespace SCFOWebsite.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int OrgId { get; set; }
 
+        [Required(ErrorMessage = "Name is required!")]
         public string Name { get; set; }
         public int Members { get; set; }
+
+        [Required(ErrorMessage = "Focus is required!")]
         public string Focus { get; set; }
 
     }

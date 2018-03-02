@@ -14,9 +14,15 @@ namespace SCFOWebsite.Models
         public int userId { get; set; }
 
         public int orgId { get; set; }
+
+        [Required(ErrorMessage = "User Name is required!")]
         public string username { get; set; }
         public string handle { get; set; }
+
+        [Required(ErrorMessage = "Email is required!")]
         public string email { get; set; }
+
+        [Required(ErrorMessage = "Password is required!")]
         public string pwd { get; set; }
         public bool admin { get; set; }
 
