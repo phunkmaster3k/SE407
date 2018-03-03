@@ -6,7 +6,7 @@
             {
     @Html.TextBox("searchOrg", null, new { @class = "form-control" })
     <br />
-                <input type="submit" value="Find Organization" class="btn btn-primary btn-large" />
+    <input type="submit" value="Find Organization" class="btn btn-primary btn-large" />
                 <span>&nbsp By: </span>
                 <div class="btn-group" data-toggle="buttons">
                     <label class="btn btn-primary active">
@@ -29,12 +29,15 @@
         </tr>
         @foreach (var item in Model.OrgsList)
         {
-            <tr>
-                <td>@item.Name</td>
-                <td>@item.Members</td>
-                <td>@item.Focus</td>
-                <td>@Html.ActionLink("Join", "JoinOrg", "Home", null, new { @class = "btn btn-primary btn-large" })</td>
-            </tr>
+            if (item.OrgId != 9000)
+            {
+                <tr>
+                    <td>@item.Name</td>
+                    <td>@item.Members</td>
+                    <td>@item.Focus</td>
+                    <td>@Html.ActionLink("Join", "JoinOrg", "Home", null, new { @class = "btn btn-primary btn-large" })</td>
+                </tr>
+            }
         }
     </thead>
 </table>

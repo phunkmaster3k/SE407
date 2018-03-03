@@ -2,6 +2,11 @@
 
 @{
     ViewBag.Title = "Details";
+    SCFOWebsite.Models.User u = null;
+    if (Session["loggedIn"] != null)
+    {
+        u = (SCFOWebsite.Models.User)Session["loggedIn"];
+    }
 }
 
 <h2>Details</h2>
@@ -67,6 +72,12 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.userId }, new {  @class = "btn btn-primary" }) |
+    @if (u != null && u.userId == Model.userId)
+    {
+        @Html.ActionLink("Edit", "Edit", new { id = u.userId }, new { @class = "btn btn-primary" })
+        <span>&nbsp;</span>
+        @Html.ActionLink("Delete", "Delete", new { id = u.userId }, new { @class = "btn btn-primary" })
+    }
+   |
     @Html.ActionLink("Back to List", "Organizations", "Organizations", null, new { @class = "btn btn-primary" })
 </p>

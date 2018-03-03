@@ -38,9 +38,19 @@ namespace SCFOWebsite.Controllers
         // GET: UsersCRUD/Details/5
         public ActionResult Details(int? id)
         {
+
+            User u = (User)Session["loggedIn"];
+
             if (id == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                if (u != null)
+                {
+                    id = u.userId;
+                } else
+                {
+                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+
+                }
             }
             User user = db.Users.Find(id);
             if (user == null)
@@ -53,17 +63,10 @@ namespace SCFOWebsite.Controllers
         // GET: UsersCRUD/Create
         public ActionResult Create()
         {
-            List<SelectListItem> list = new List<SelectListItem>();
-            SelectListItem itm = new SelectListItem { Text = "None", Value = "0" };
-            list.Add(itm);
+           
 
-            foreach (Org o in db.Orgs)
-            {
-                SelectListItem item = new SelectListItem { Text = o.Name, Value = o.OrgId.ToString() };
-                list.Add(item);           
-            }
-
-            ViewBag.orgs = new SelectList(list, "Value", "Text");
+            ViewBag.orgs = new SelectList(db.Orgs, "OrgId", "Name");
+            
             return View();
         }
 
@@ -72,8 +75,10 @@ namespace SCFOWebsite.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "userId,orgId,username,handle,email,pwd,admin")] User user)
+        public ActionResult Create([Bind(Include = "orgId,username,handle,email,pwd,admin")] User user)
         {
+
+
             if (ModelState.IsValid)
             {
                 db.Users.Add(user);
@@ -105,7 +110,7 @@ namespace SCFOWebsite.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "userId,orgId,username,handle,email,pwd,admin")] User user)
+        public ActionResult Edit([Bind(Include = "orgId,username,handle,email,pwd,admin")] User user)
         {
             if (ModelState.IsValid)
             {
@@ -140,10 +145,27 @@ namespace SCFOWebsite.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             User user = db.Users.Find(id);
-            user.orgId = 0;
+            db.Users.Remove(user);
+            db.SaveChanges();
+            return RedirectToAction("Organizations", "Organizations");
+        }
+
+        public ActionResult RemoveFromOrg(int id)
+        {
+            User user = db.Users.Find(id);
+            user.orgId = 9000;
             db.Entry(user).State = EntityState.Modified;
             //db.Users.Remove(user);
             db.SaveChanges();
+            return RedirectToAction("Organizations", "Organizations");
+        }
+
+        public ActionResult admin(int id)
+        {
+            User user = db.Users.Find(id);
+            user.admin = !user.admin;
+            db.SaveChanges();
+
             return RedirectToAction("Organizations", "Organizations");
         }
 

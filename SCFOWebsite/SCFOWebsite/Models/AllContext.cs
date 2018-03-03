@@ -34,6 +34,14 @@ namespace SCFOWebsite.Models
 
                 context.Orgs.Add(new Org()
                 {
+                    OrgId = 9000,
+                    Name = "None",
+                    Members = 0,
+                    Focus = "NA"
+                });
+
+                context.Orgs.Add(new Org()
+                {
                     Name = "528th Fleet",
                     Members = 23,
                     Focus = "Exploration"

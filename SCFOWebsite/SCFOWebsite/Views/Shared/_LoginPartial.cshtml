@@ -16,7 +16,15 @@
 else
 {
     <ul class="nav navbar-nav navbar-right">
-        @if (Session["loggedIn"] == null)
+        @{ 
+            SCFOWebsite.Models.User u = null;
+            if (Session["loggedIn"] != null)
+            {
+                u = (SCFOWebsite.Models.User)Session["loggedIn"];
+            }
+        }
+
+        @if (u == null)
         {
             <li>@Html.ActionLink("Register", "Create", "UsersCRUD")</li>
             <li>@Html.ActionLink("Log in", "Login", "Users")</li>
