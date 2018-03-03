@@ -13,11 +13,12 @@ namespace SCFOWebsite.Controllers
 {
     public class UsersController : Controller
     {
-        
+
+        private AllContext db = new AllContext();
+
         public ActionResult Register()
         {
-            var factory = new OrgFactory();
-            var viewModel = new OrgViewModel(factory.Orgs);
+            var viewModel = new OrgViewModel(db.Orgs);
             return View(viewModel);
         }
 
@@ -25,10 +26,10 @@ namespace SCFOWebsite.Controllers
         {
 
             //temp stuff!!
-            var factory = new UserFactory();
+            
 
             User user = new User();
-            user = factory.Users.First();
+            user = db.Users.First();
 
             Session["LoggedIn"] = user;
 

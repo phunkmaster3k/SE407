@@ -203,12 +203,14 @@
     <Compile Include="Controllers\OrgCRUDController.cs" />
     <Compile Include="Controllers\ShipsController.cs" />
     <Compile Include="Controllers\ShipsCRUDController.cs" />
+    <Compile Include="Controllers\Users3Controller.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Controllers\UsersCRUDController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\AllContext.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Org.cs" />
@@ -315,6 +317,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\Images\Ships\" />
+    <Folder Include="Views\Users3\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

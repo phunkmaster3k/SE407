@@ -11,18 +11,22 @@ namespace SCFOWebsite.ViewModels.Home
     {
         private string url;
         private XmlReader reader;
-        private SyndicationFeed feed;
+        //private SyndicationFeed feed;
 
-        public List<SyndicationItem> RSSList;
-
+        //public List<SyndicationItem> RSSList;
+        public List<string> RSSList;
 
         public RSSViewModel(string url)
         {
-            reader = XmlReader.Create(url);
+            /*reader = XmlReader.Create(url);
             feed = SyndicationFeed.Load(reader);
             reader.Close();
+            RSSList = feed.Items.ToList();*/
+            List<string> feed = new List<string>();
 
-            RSSList = feed.Items.ToList();
+            feed.Add("TEST");
+
+            RSSList = feed;
         }
     }
 }

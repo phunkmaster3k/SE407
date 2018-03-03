@@ -13,7 +13,7 @@ namespace SCFOWebsite.Controllers
 {
     public class ShipsCRUDController : Controller
     {
-        private ShipFactory db = new ShipFactory();
+        private AllContext db = new AllContext();
 
         // GET: ShipsCRUD
         public ActionResult Index()
@@ -127,14 +127,13 @@ namespace SCFOWebsite.Controllers
 
         public ActionResult Image(int id)
         {
-            var fac = new ShipFactory();
-            var ship = fac.Ships.Where(p => p.ShipId == id).FirstOrDefault();
+            
+            var ship = db.Ships.Where(p => p.ShipId == id).FirstOrDefault();
 
             if (ship == null)
             {
                 return HttpNotFound();
             }
-
 
             var img = new WebImage(string.Format("~/Content/Images/{0}.jpg", ship.ImageName));
             img.Resize(100, 100);
@@ -146,16 +145,16 @@ namespace SCFOWebsite.Controllers
         {
             if (Session["LoggedIn"] != null)
             {
-                PlayerShipsFactory fac = new PlayerShipsFactory();
+                
                 User user = (User)Session["loggedIn"];
                     
-                fac.playerShips.Add(new PlayerShips()
+                db.playerShips.Add(new PlayerShips()
                 {
                     shipId = id,
                     playerId = user.userId,
                 });
 
-                fac.SaveChanges();
+                db.SaveChanges();
                 return RedirectToAction("Index");
             }
             return View("Index");
@@ -163,19 +162,21 @@ namespace SCFOWebsite.Controllers
 
         public ActionResult myShips()
         {
-            PlayerShipsFactory psfac = new PlayerShipsFactory();
-            ShipFactory sfac = new ShipFactory();
+            
+            
             User user = (User)Session["loggedIn"];
 
-            var IDs = (from p in psfac.playerShips
+
+            //TODO: see if I can do join now
+            var IDs = (from p in db.playerShips
                        where p.playerId == user.userId
                        select p.shipId).ToArray();
 
             List<Ship> myShips = new List<Ship>();
-            //because we wan to have duplicates shown
-            foreach (int i in IDs)
+            //because we want to have duplicates shown
+            foreach (int ship in IDs)
             {
-                myShips.Add(sfac.Ships.FirstOrDefault(s => s.ShipId == i));
+                myShips.Add(db.Ships.FirstOrDefault(s => s.ShipId == ship));
             }
 
             return PartialView(myShips.OrderBy(o => o.ShipId).AsEnumerable());
@@ -188,19 +189,18 @@ namespace SCFOWebsite.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            PlayerShipsFactory psfac = new PlayerShipsFactory();
             User user = (User)Session["loggedIn"];
 
-            var x = psfac.playerShips.FirstOrDefault(s => s.shipId == id && s.playerId == user.userId);
+            var shipId = db.playerShips.FirstOrDefault(s => s.shipId == id && s.playerId == user.userId);
 
             Ship ship = db.Ships.Find(id);
-            if (x == null)
+            if (shipId == null)
             {
                 return HttpNotFound();
             }
 
-            psfac.playerShips.Remove(x);
-            psfac.SaveChanges();
+            db.playerShips.Remove(shipId);
+            db.SaveChanges();
 
             return RedirectToAction("Index");
         }

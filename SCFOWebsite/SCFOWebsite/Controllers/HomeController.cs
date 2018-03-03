@@ -17,10 +17,10 @@ namespace SCFOWebsite.Controllers
         public ActionResult Index()
         {
             string url = "https://robertsspaceindustries.com/comm-link/rss";
-           
+
             //passing in url so i can use RRSViewModel with any feed
             var viewModel = new ViewModels.Home.RSSViewModel(url);
-           
+
             return View(viewModel);
         }
 

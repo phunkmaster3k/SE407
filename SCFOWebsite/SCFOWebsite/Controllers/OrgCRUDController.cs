@@ -12,7 +12,7 @@ namespace SCFOWebsite.Controllers
 {
     public class OrgCRUDController : Controller
     {
-        private OrgFactory db = new OrgFactory();
+        private AllContext db = new AllContext();
 
         // GET: OrgCRUD
         public ActionResult Index()
