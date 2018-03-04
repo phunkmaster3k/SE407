@@ -74,6 +74,8 @@ namespace SCFOWebsite.Controllers
                 user.orgId = lg.orgId;
             } 
 
+           
+
             db.Entry(user).State = EntityState.Modified;
             db.SaveChanges();
             return View("Organizations");

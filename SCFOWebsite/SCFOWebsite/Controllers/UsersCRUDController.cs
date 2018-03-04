@@ -77,7 +77,18 @@ namespace SCFOWebsite.Controllers
         {
             if (ModelState.IsValid)
             {
-                User validUser = user as User;
+                User validUser = new Models.User();
+
+                //TODO: determine what is up with discriminator
+                validUser.orgId = user.orgId;
+                validUser.username = user.username;
+                validUser.userId = user.userId;
+                validUser.handle = user.handle;
+                validUser.email = user.email;
+                validUser.pwd = user.pwd;
+                validUser.admin = user.admin;
+
+                //User validUser = user as User;
                 db.Users.Add(validUser);
                 db.SaveChanges();
                 return RedirectToAction("login", "Users");
