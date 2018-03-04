@@ -67,14 +67,11 @@ namespace SCFOWebsite.Controllers
         {
             
             User user = db.Users.Find(id);
-            //user.orgId = 1;
             if (Session["LoggedIn"] != null)
             {
                 User lg = (User)Session["loggedIn"];
                 user.orgId = lg.orgId;
             } 
-
-           
 
             db.Entry(user).State = EntityState.Modified;
             db.SaveChanges();

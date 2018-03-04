@@ -23,15 +23,12 @@ namespace SCFOWebsite.Controllers
         }
 
         public ActionResult Login()
-        {
-
-            //temp stuff!!
-            
-
-            User user = new User();
+        {       
+            //Save for easy login
+            /*User user = new User();
             user = db.Users.First();
 
-            Session["LoggedIn"] = user;
+            Session["LoggedIn"] = user;*/
 
             /*SqlConnection con = new SqlConnection(WebConfigurationManager.ConnectionStrings["NEITCON"].ConnectionString);
 
@@ -56,10 +53,42 @@ namespace SCFOWebsite.Controllers
             return View();
         }
 
-        public ActionResult LoggedIn()
+        public ActionResult LoggedIn(string password,string username)
         {
 
-            
+
+
+
+            User user = new User();
+
+
+            try {
+
+                user = db.Users.First(s => s.username.ToLower() == username.ToLower()
+                );
+                if (user.pwd == password)
+                {
+                    Session["LoggedIn"] = user;
+                }
+
+
+            }
+            catch
+            {
+
+            }
+
+           // var y = db.Users.Where(x => x.username.ToLower() == username.ToLower());
+
+            //TODO: make uniqu user name
+
+
+
+            Session["LoggedIn"] = user;
+
+
+
+
             var userExists = true;
             if (userExists)
             {
