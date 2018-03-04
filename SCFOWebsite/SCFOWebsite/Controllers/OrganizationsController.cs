@@ -22,6 +22,8 @@ namespace SCFOWebsite.Controllers
         {
             
             IQueryable<Org> orgs = db.Orgs.OrderBy(p => p.Name);
+            //get rid of the None org
+            orgs = orgs.Where(s => s.OrgId != 1);
 
             if (searchOrg != null)
             {
@@ -48,7 +50,7 @@ namespace SCFOWebsite.Controllers
 
             //get users not already in org
             var users = (from p in db.Users
-                         where p.orgId != userLoggedIn.orgId
+                         where p.orgId == 1
                          select p).ToList().AsQueryable(); 
 
             if (searchUser != null)
@@ -65,12 +67,12 @@ namespace SCFOWebsite.Controllers
         {
             
             User user = db.Users.Find(id);
-            
+            //user.orgId = 1;
             if (Session["LoggedIn"] != null)
             {
                 User lg = (User)Session["loggedIn"];
                 user.orgId = lg.orgId;
-            }
+            } 
 
             db.Entry(user).State = EntityState.Modified;
             db.SaveChanges();

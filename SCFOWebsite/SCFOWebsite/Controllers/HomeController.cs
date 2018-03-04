@@ -27,7 +27,7 @@ namespace SCFOWebsite.Controllers
         public ActionResult JoinOrg()
         {
 
-
+            //TODO: add email to join org
             return View();
         }
 

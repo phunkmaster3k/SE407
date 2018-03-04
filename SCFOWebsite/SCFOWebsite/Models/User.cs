@@ -24,6 +24,11 @@ namespace SCFOWebsite.Models
 
         [Required(ErrorMessage = "Password is required!")]
         public string pwd { get; set; }
+
+        //[System.ComponentModel.DataAnnotations.Compare("pwd", ErrorMessage = "Password doesn't match, Type again !")]
+        //[NotMapped]
+        //public string retype { get; set; }
+
         public bool admin { get; set; }
 
         

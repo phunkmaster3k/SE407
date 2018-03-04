@@ -10,8 +10,7 @@ namespace SCFOWebsite.Models
     {
         public AllContext() : base("name=DefaultConnection")
         {
-            Database.SetInitializer(new AllIntializer());
-           
+            Database.SetInitializer(new AllIntializer());  
         }
 
         public System.Data.Entity.DbSet<SCFOWebsite.Models.Org> Orgs { get; set; }
@@ -34,7 +33,6 @@ namespace SCFOWebsite.Models
 
                 context.Orgs.Add(new Org()
                 {
-                    OrgId = 9000,
                     Name = "None",
                     Members = 0,
                     Focus = "NA"
@@ -64,11 +62,12 @@ namespace SCFOWebsite.Models
 
                 context.Users.Add(new User()
                 {
-                    orgId = 1,
+                    orgId = 2,
                     username = "User",
                     handle = "Handle",
                     email = "email@email",
                     pwd = "123",
+                    //retype = "",
                     admin = true
                 });
 
@@ -131,3 +130,5 @@ namespace SCFOWebsite.Models
         }
     }
 }
+
+

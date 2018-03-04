@@ -161,12 +161,8 @@ namespace SCFOWebsite.Controllers
         }
 
         public ActionResult myShips()
-        {
-            
-            
+        {      
             User user = (User)Session["loggedIn"];
-
-
             //TODO: see if I can do join now
             var IDs = (from p in db.playerShips
                        where p.playerId == user.userId

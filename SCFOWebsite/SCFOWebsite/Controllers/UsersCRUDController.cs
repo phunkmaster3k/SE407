@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using SCFOWebsite.Models;
+using SCFOWebsite.ViewModels.Home;
 
 namespace SCFOWebsite.Controllers
 {
@@ -63,10 +64,7 @@ namespace SCFOWebsite.Controllers
         // GET: UsersCRUD/Create
         public ActionResult Create()
         {
-           
-
-            ViewBag.orgs = new SelectList(db.Orgs, "OrgId", "Name");
-            
+            ViewBag.orgs = new SelectList(db.Orgs, "OrgId", "Name");        
             return View();
         }
 
@@ -75,18 +73,17 @@ namespace SCFOWebsite.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "orgId,username,handle,email,pwd,admin")] User user)
+        public ActionResult Create([Bind(Include = "orgId,username,handle,email,pwd,retype,admin")]  ViewModels.Home.RegisterViewModel user)
         {
-
-
             if (ModelState.IsValid)
             {
-                db.Users.Add(user);
+                User validUser = user as User;
+                db.Users.Add(validUser);
                 db.SaveChanges();
                 return RedirectToAction("login", "Users");
-
             }
 
+            ViewBag.orgs = new SelectList(db.Orgs, "OrgId", "Name");
             return View(user);
         }
 
@@ -153,7 +150,7 @@ namespace SCFOWebsite.Controllers
         public ActionResult RemoveFromOrg(int id)
         {
             User user = db.Users.Find(id);
-            user.orgId = 9000;
+            user.orgId = 1;
             db.Entry(user).State = EntityState.Modified;
             //db.Users.Remove(user);
             db.SaveChanges();
