@@ -65,9 +65,8 @@ namespace SCFOWebsite.Models
                     orgId = 2,
                     username = "User",
                     handle = "Handle",
-                    email = "email@email",
-                    pwd = "123",
-                    //retype = "",
+                    email = "email@email.email",
+                    pwd = "1234567890",
                     admin = true
                 });
 

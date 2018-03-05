@@ -46,7 +46,7 @@
             </div>
 
             <div class="form-group">
-                @Html.Label("Password", htmlAttributes: new { @class = "control-label col-md-2" })
+                @Html.LabelFor(model => model.pwd, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
                     @Html.PasswordFor(model => model.pwd, new { @class = "form-control" })
                     @Html.ValidationMessageFor(model => model.pwd, "", new { @class = "text-danger" })
@@ -54,7 +54,7 @@
             </div>
 
             <div class="form-group">
-                @Html.Label("Retype Password", htmlAttributes: new { @class = "control-label col-md-2" })
+                @Html.LabelFor(model => model.retype, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
                     @Html.Password("retype", null, new { @class = "form-control" })
                     @Html.ValidationMessageFor(model => model.retype, "", new { @class = "text-danger" })

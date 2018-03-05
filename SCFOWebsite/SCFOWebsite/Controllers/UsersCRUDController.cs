@@ -30,9 +30,10 @@ namespace SCFOWebsite.Controllers
             return PartialView(query);
         }
 
-        public ActionResult OrgName(int id) {
+        public ActionResult OrgName(int id)
+        {
 
-            Org org = db.Orgs.Find(id);           
+            Org org = db.Orgs.Find(id);
             return PartialView(org);
         }
 
@@ -47,7 +48,8 @@ namespace SCFOWebsite.Controllers
                 if (u != null)
                 {
                     id = u.userId;
-                } else
+                }
+                else
                 {
                     return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
 
@@ -64,7 +66,7 @@ namespace SCFOWebsite.Controllers
         // GET: UsersCRUD/Create
         public ActionResult Create()
         {
-            ViewBag.orgs = new SelectList(db.Orgs, "OrgId", "Name");        
+            ViewBag.orgs = new SelectList(db.Orgs, "OrgId", "Name");
             return View();
         }
 
@@ -75,7 +77,26 @@ namespace SCFOWebsite.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "orgId,username,handle,email,pwd,retype,admin")]  ViewModels.Home.RegisterViewModel user)
         {
-            if (ModelState.IsValid)
+            var isValidName = false;
+            var isValidEmail = false;
+            var newName = db.Users.Where(p => p.username == user.username);
+            var newEmail = db.Users.Where(p => p.email == user.email);
+            if (newName.Any())
+            {
+                ModelState.AddModelError("username", "That name is taken");
+            } else 
+            {
+                isValidName = true;
+            }
+            if (newEmail.Any())
+            {
+                ModelState.AddModelError("email", "There is already an account for that email");
+            } else
+            {
+                isValidEmail = true;
+            }
+
+            if (ModelState.IsValid && isValidName && isValidEmail)
             {
                 User validUser = new Models.User();
 
@@ -120,6 +141,9 @@ namespace SCFOWebsite.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "orgId,username,handle,email,pwd,admin")] User user)
         {
+            User loggedInUser = (User)Session["loggedIn"];
+            user.userId = loggedInUser.userId;
+
             if (ModelState.IsValid)
             {
                 db.Entry(user).State = EntityState.Modified;
@@ -131,7 +155,7 @@ namespace SCFOWebsite.Controllers
         }
 
 
-        
+
         // GET: UsersCRUD/Delete/5
         public ActionResult Delete(int? id)
         {

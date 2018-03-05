@@ -13,6 +13,7 @@ namespace SCFOWebsite.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int OrgId { get; set; }
 
+        [RegularExpression("...+", ErrorMessage = "Needs to be 3 characters long")]
         [Required(ErrorMessage = "Name is required!")]
         public string Name { get; set; }
         public int Members { get; set; }

@@ -20,7 +20,7 @@
             
             @{ Html.RenderAction("OrgSearch"); }
         </div>
-        @if (u != null)
+        @if (u != null && u.orgId != 1)
         {
             <div class="col-md-1 myTable" style="margin-left:10px">
                 @{

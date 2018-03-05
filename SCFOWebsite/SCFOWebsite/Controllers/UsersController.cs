@@ -55,51 +55,23 @@ namespace SCFOWebsite.Controllers
 
         public ActionResult LoggedIn(string password,string username)
         {
-
-
-
-
             User user = new User();
-
-
             try {
-
-                user = db.Users.First(s => s.username.ToLower() == username.ToLower()
-                );
+                user = db.Users.First(s => s.username == username);
                 if (user.pwd == password)
                 {
                     Session["LoggedIn"] = user;
+                    return RedirectToAction("Index", "Home");
+                } else
+                {
+                    ModelState.AddModelError("password", "Password Invalid");
+                    return View("Login");
                 }
-
-
-            }
-            catch
+            } catch
             {
-
-            }
-
-           // var y = db.Users.Where(x => x.username.ToLower() == username.ToLower());
-
-            //TODO: make uniqu user name
-
-
-
-            Session["LoggedIn"] = user;
-
-
-
-
-            var userExists = true;
-            if (userExists)
-            {
-                return RedirectToAction("Index", "Home");
-            }
-            else
-            {
-                ViewBag.res = "Invalid Login";
-                return View("Response");
-            }
-           
+                ModelState.AddModelError("username", "No user with that name");
+                return View("Login");
+            }          
         }
 
         public ActionResult Logout()
