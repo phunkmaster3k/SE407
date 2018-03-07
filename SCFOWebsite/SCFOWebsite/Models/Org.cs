@@ -15,6 +15,7 @@ namespace SCFOWebsite.Models
 
         [RegularExpression("...+", ErrorMessage = "Needs to be 3 characters long")]
         [Required(ErrorMessage = "Name is required!")]
+        [Display(Name = "Organization Name")]
         public string Name { get; set; }
         public int Members { get; set; }
 

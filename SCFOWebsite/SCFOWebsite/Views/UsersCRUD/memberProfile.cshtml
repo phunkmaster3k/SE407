@@ -1,0 +1,76 @@
+﻿@model SCFOWebsite.ViewModels.Home.ProfileViewModel
+
+
+@{
+    ViewBag.Title = "memberProfile";
+}
+
+<h2>@Model.user.username Profile</h2>
+<hr />
+<div class="row">
+    <div class="col-md-6 myTable" style="padding-right:100px">
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.org.Name)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.org.Name)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.user.username)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.user.username)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.user.handle)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.user.handle)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.user.email)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.user.email)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.user.admin)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.user.admin)
+            </dd>
+        </dl>
+    </div>
+    @if (Model.ships.Count >= 1)
+    {
+        <div class="col-md-6 myTable" style="margin-left:20px; padding:30px;">
+            <h3>Ships</h3>
+            <table class="table">
+                <tr>
+                    <th>Manufacturer</th>
+                    <th>Name</th>
+                    <th>Role</th>
+                </tr>
+                @foreach (var ship in Model.ships)
+                {
+                    <tr>
+                        <td>@ship.Manufacturer</td>
+                        <td>@ship.Name</td>
+                        <td>@ship.Role</td>
+                    </tr>
+
+                }
+            </table>
+
+        </div>
+    }
+</div>

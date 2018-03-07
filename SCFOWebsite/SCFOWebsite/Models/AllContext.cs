@@ -8,7 +8,7 @@ namespace SCFOWebsite.Models
 {
     public class AllContext : DbContext
     {
-        public AllContext() : base("name=DefaultConnection")
+        public AllContext() : base("name=NEITCON")
         {
             Database.SetInitializer(new AllIntializer());  
         }

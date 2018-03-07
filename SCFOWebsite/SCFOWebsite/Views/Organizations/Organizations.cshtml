@@ -16,8 +16,10 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-1 myTable">
-            @Html.ActionLink("Create New Organization", "Create", "OrgCRUD", null, new { @class = "btn btn-primary" });
-            
+            @if (u != null && u.orgId == 1)
+            {
+                @Html.ActionLink("Create New Organization", "Create", "OrgCRUD", null, new { @class = "btn btn-primary" });
+            }       
             @{ Html.RenderAction("OrgSearch"); }
         </div>
         @if (u != null && u.orgId != 1)

@@ -52,6 +52,15 @@ namespace SCFOWebsite.Controllers
             {
                 db.Orgs.Add(org);
                 db.SaveChanges();
+
+                User user = (User)Session["loggedIn"];
+                user.orgId = org.OrgId;
+                user.admin = true;
+                db.Entry(user).State = EntityState.Modified;
+                db.SaveChanges();
+
+                //TODO: unique org names
+
                 return RedirectToAction("Organizations", "Organizations");
             }
 
@@ -84,7 +93,7 @@ namespace SCFOWebsite.Controllers
             {
                 db.Entry(org).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Organizations", "Organizations");
             }
             return View(org);
         }

@@ -186,6 +186,7 @@ namespace SCFOWebsite.Controllers
         {
             User user = db.Users.Find(id);
             user.orgId = 1;
+            user.admin = false;
             db.Entry(user).State = EntityState.Modified;
             //db.Users.Remove(user);
             db.SaveChanges();
@@ -199,6 +200,31 @@ namespace SCFOWebsite.Controllers
             db.SaveChanges();
 
             return RedirectToAction("Organizations", "Organizations");
+        }
+
+        public ActionResult memberProfile(int? id)
+        {
+           
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            ProfileViewModel viewModel = new ProfileViewModel();
+
+            viewModel.user = db.Users.Find(id);
+            if (viewModel.user == null)
+            {
+                return HttpNotFound();
+            }
+
+            viewModel.org = db.Orgs.Find(viewModel.user.orgId);
+
+            viewModel.ships = db.Ships.SqlQuery("SELECT * FROM Ships LEFT JOIN PlayerShips ON Ships.ShipId = PlayerShips.shipId WHERE PlayerShips.playerId = " + id).ToList();
+
+            return View(viewModel);
+
+
+           
         }
 
         protected override void Dispose(bool disposing)
