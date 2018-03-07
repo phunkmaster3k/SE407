@@ -35,7 +35,7 @@
                     <td>@item.Name</td>
                     <td>@item.Members</td>
                     <td>@item.Focus</td>
-                    <td>@Html.ActionLink("Join", "JoinOrg", "Home", null, new { @class = "btn btn-primary btn-large" })</td>
+                    <td>@Html.ActionLink("Join", "joinOrg", "Organizations", new { id = item.OrgId }, new { @class = "btn btn-primary btn-large" })</td>
                 </tr>
             }
         }

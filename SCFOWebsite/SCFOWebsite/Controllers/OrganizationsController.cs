@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using SCFOWebsite.Models;
 using SCFOWebsite.ViewModels.Home;
 using System.Data.Entity;
+using System.Net.Mail;
 
 namespace SCFOWebsite.Controllers
 {
@@ -77,6 +78,75 @@ namespace SCFOWebsite.Controllers
             db.SaveChanges();
             return View("Organizations");
         }
+
+        public ActionResult joinOrg(int id)
+        {
+
+            User user = (User)Session["loggedIn"];
+            Org org = db.Orgs.Find(id);
+           
+            //get all admin emails for org
+            var emails = (from p in db.Users
+                       where p.orgId == id && p.admin == true
+                       select p.email).ToArray();
+
+            MailMessage mail = new MailMessage();
+
+            /*
+            foreach (var email in emails)
+            {
+                mail.To.Add(email);
+            } */
+
+            mail.To.Add("antelope81796@yahoo.com");
+            mail.From = new MailAddress("cptjtkirk9000@gmail.com");
+            mail.Subject = "New Organization Invite Request";
+
+            //join org link
+            string Body = "Click here to accept <a href=\"http://localhost:59444/Organizations/emailResponse/" + user.userId + ">\"";
+            mail.Body = Body;
+            mail.IsBodyHtml = true;
+            SmtpClient smtp = new SmtpClient("smtp.gmail.com", 587);
+            
+            smtp.UseDefaultCredentials = false;
+            smtp.Credentials = new System.Net.NetworkCredential("cptjtkirk9000@gmail.com", "spaceman");  
+            smtp.EnableSsl = true;
+            smtp.Send(mail);
+
+            return RedirectToAction("Feedback", "Home", new { feedback = "Emails sent!" });
+        }
+
+        public ActionResult emailResponse(int id)
+        {
+            User user = (User)Session["loggedIn"];
+            User newUser = db.Users.Find(id);
+
+            if (user != null && user.admin && user.orgId != id)
+            {
+                if (newUser == null )
+                {
+                    return RedirectToAction("Feedback", "Home", new { feedback = "User does not exist" });
+                } else if ( newUser.orgId == user.orgId)
+                {
+                    return RedirectToAction("Feedback", "Home", new { feedback = "User already in organization" });
+                } else
+                {
+                    newUser.orgId = user.orgId;
+                    db.Entry(newUser).State = EntityState.Modified;
+                    db.SaveChanges();
+
+                    return RedirectToAction("Feedback", "Home", new { feedback = "User added" });
+                }
+
+            } else
+            {
+                Session.Abandon();
+                return RedirectToAction("Login","Users");
+            }
+
+        }
+
+
 
     }
 }

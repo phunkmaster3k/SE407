@@ -24,10 +24,10 @@ namespace SCFOWebsite.Controllers
             return View(viewModel);
         }
 
-        public ActionResult JoinOrg()
+        public ActionResult Feedback(string feedback)
         {
 
-            //TODO: add email to join org
+            ViewBag.feedback = feedback;
             return View();
         }
 

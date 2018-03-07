@@ -315,6 +315,8 @@
     <Content Include="Views\ShipsCRUD\Index.cshtml" />
     <Content Include="Views\ShipsCRUD\myShips.cshtml" />
     <Content Include="Views\UsersCRUD\memberProfile.cshtml" />
+    <Content Include="Views\Organizations\emailResponse.cshtml" />
+    <Content Include="Views\Home\Feedback.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
