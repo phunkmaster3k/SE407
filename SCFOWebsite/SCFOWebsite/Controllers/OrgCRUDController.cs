@@ -56,6 +56,8 @@ namespace SCFOWebsite.Controllers
                 User user = (User)Session["loggedIn"];
                 user.orgId = org.OrgId;
                 user.admin = true;
+                Session["loggedId"] = user;
+
                 db.Entry(user).State = EntityState.Modified;
                 db.SaveChanges();
 

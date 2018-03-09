@@ -131,6 +131,8 @@ namespace SCFOWebsite.Controllers
             {
                 return HttpNotFound();
             }
+
+
             return View(user);
         }
 
@@ -143,11 +145,14 @@ namespace SCFOWebsite.Controllers
         {
             User loggedInUser = (User)Session["loggedIn"];
             user.userId = loggedInUser.userId;
+            Session["loggedIn"] = user;
 
             if (ModelState.IsValid)
             {
                 db.Entry(user).State = EntityState.Modified;
                 db.SaveChanges();
+
+
                 return RedirectToAction("Organizations", "Organizations");
 
             }
@@ -187,8 +192,16 @@ namespace SCFOWebsite.Controllers
             User user = db.Users.Find(id);
             user.orgId = 1;
             user.admin = false;
+
+            //check if you are removing yourself
+            //TODO: add check so there is always an admin
+            User loggedInUser = (User)Session["loggedIn"];
+            if (loggedInUser.userId == id)
+            {
+                Session["loggedIn"] = user;
+            }
+
             db.Entry(user).State = EntityState.Modified;
-            //db.Users.Remove(user);
             db.SaveChanges();
             return RedirectToAction("Organizations", "Organizations");
         }

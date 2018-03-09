@@ -7,7 +7,7 @@
     @Html.TextBox("searchOrg", null, new { @class = "form-control" })
     <br />
     <input type="submit" value="Find Organization" class="btn btn-primary btn-large" />
-                <span>&nbsp By: </span>
+    <span>&nbsp By: </span>
                 <div class="btn-group" data-toggle="buttons">
                     <label class="btn btn-primary active">
                         @Html.RadioButton("by", "Name", true, new { @class = "form-contol" })
@@ -35,10 +35,12 @@
                     <td>@item.Name</td>
                     <td>@item.Members</td>
                     <td>@item.Focus</td>
-                    <td>@Html.ActionLink("Join", "joinOrg", "Organizations", new { id = item.OrgId }, new { @class = "btn btn-primary btn-large" })</td>
+                    @if (Session["loggedIn"] != null)
+                    {
+                        <td>@Html.ActionLink("Join", "joinOrg", "Organizations", new { id = item.OrgId }, new { @class = "btn btn-primary btn-large" })</td>
+                    }
                 </tr>
             }
         }
     </thead>
 </table>
-

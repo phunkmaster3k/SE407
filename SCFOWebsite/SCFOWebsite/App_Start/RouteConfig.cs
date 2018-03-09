@@ -19,7 +19,7 @@ namespace SCFOWebsite
             routes.MapRoute(" Ships", "Ships",
                 new { controller = "Home", action = "Ships" });
 
-            routes.MapRoute( "AddShips", "AddShips", 
+            routes.MapRoute("AddShips", "AddShips",
                 new { controller = "Home", action = "AddShips" });
 
             routes.MapRoute(

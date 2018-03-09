@@ -76,7 +76,7 @@ namespace SCFOWebsite.Controllers
 
             db.Entry(user).State = EntityState.Modified;
             db.SaveChanges();
-            return View("Organizations");
+            return RedirectToAction("Organizations");
         }
 
         public ActionResult joinOrg(int id)
@@ -92,18 +92,17 @@ namespace SCFOWebsite.Controllers
 
             MailMessage mail = new MailMessage();
 
-            /*
+            
             foreach (var email in emails)
             {
                 mail.To.Add(email);
-            } */
+            } 
 
-            mail.To.Add("antelope81796@yahoo.com");
             mail.From = new MailAddress("cptjtkirk9000@gmail.com");
             mail.Subject = "New Organization Invite Request";
 
             //join org link
-            string Body = "Click here to accept <a href=\"http://localhost:59444/Organizations/emailResponse/" + user.userId + ">\"";
+            string Body = "Click <a href='http://localhost:59444/Organizations/emailResponse/" + user.userId + "'>Here</a> here to accept new organization member";
             mail.Body = Body;
             mail.IsBodyHtml = true;
             SmtpClient smtp = new SmtpClient("smtp.gmail.com", 587);

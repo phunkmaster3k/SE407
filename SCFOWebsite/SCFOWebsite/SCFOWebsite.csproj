@@ -213,13 +213,9 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Org.cs" />
-    <Compile Include="Models\OrgFactory.cs" />
     <Compile Include="Models\PlayerShips.cs" />
-    <Compile Include="Models\PlayerShipsFactory.cs" />
     <Compile Include="Models\Ship.cs" />
-    <Compile Include="Models\ShipFactory.cs" />
     <Compile Include="Models\User.cs" />
-    <Compile Include="Models\UserFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\Home\OrgViewModel.cs" />
