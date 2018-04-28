@@ -12,8 +12,8 @@ namespace SCFOWebsite.Models
         {
             Database.SetInitializer(new AllIntializer());  
         }
-
-        public System.Data.Entity.DbSet<SCFOWebsite.Models.Org> Orgs { get; set; }
+  
+        public DbSet<Org> Orgs { get; set; }
         public System.Data.Entity.DbSet<SCFOWebsite.Models.User> Users { get; set; }
         public System.Data.Entity.DbSet<SCFOWebsite.Models.Ship> Ships { get; set; }
         public System.Data.Entity.DbSet<SCFOWebsite.Models.PlayerShips> playerShips { get; set; }

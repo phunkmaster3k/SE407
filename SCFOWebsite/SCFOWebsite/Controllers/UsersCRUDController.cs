@@ -60,6 +60,8 @@ namespace SCFOWebsite.Controllers
             {
                 return HttpNotFound();
             }
+
+            ViewBag.orgname = db.Orgs.Find(user.orgId).Name;
             return View(user);
         }
 
